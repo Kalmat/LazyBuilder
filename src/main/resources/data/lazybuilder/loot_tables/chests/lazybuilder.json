@@ -1,0 +1,11 @@
+{
+	"addition": "minecraft:chests/",
+	"start_block_item": "lazybuilder:start_block",
+	"start_block_weight": 30,
+	"mid_block_item": "lazybuilder:mid_block",
+	"mid_block_weight": 30,
+	"end_block_item": "lazybuilder:end_block",
+	"end_block_weight": 30,
+	"copy_paste_block_item": "lazybuilder:copy_paste_block",
+	"copy_paste_block_weight": 10
+}
