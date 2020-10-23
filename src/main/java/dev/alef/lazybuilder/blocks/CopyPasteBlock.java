@@ -63,7 +63,7 @@ public class CopyPasteBlock extends Block {
     	copypaste.destroy(worldIn, pos, state, (PlayerEntity) placer, true, !copypaste.isLoaded());
     	copypaste.setStartBlockPos(pos, (PlayerEntity) placer);
     	copypaste.setActive(true);
-
+    	
     	super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
     }
 

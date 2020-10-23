@@ -38,6 +38,11 @@ public class StructureList {
 		return null;
 	}
 	
+	public List<Structure> getList() {
+		
+		return STRUCTURE_LIST;
+	}
+	
 	public void delete(World worldIn, PlayerEntity player) {
 		
 		Structure structure = null;

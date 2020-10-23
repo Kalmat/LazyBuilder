@@ -7,6 +7,7 @@ import dev.alef.lazybuilder.blocks.CopyPasteBlock;
 import dev.alef.lazybuilder.blocks.EndBlock;
 import dev.alef.lazybuilder.blocks.MidBlock;
 import dev.alef.lazybuilder.blocks.MidBlockMarker;
+import dev.alef.lazybuilder.blocks.ProtectBlock;
 import dev.alef.lazybuilder.blocks.StartBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -32,6 +33,7 @@ public class BlockList {
     public static Block mid_block = new MidBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.1f, 0.1f).harvestLevel(0).sound(SoundType.METAL).func_235838_a_(lightValue));
     public static Block mid_block_marker = new MidBlockMarker(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.1f, 0.1f).harvestLevel(0).sound(SoundType.METAL).func_235838_a_(lightValue));
     public static Block end_block = new EndBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.1f, 0.1f).harvestLevel(0).sound(SoundType.METAL).func_235838_a_(lightValue));
+    public static Block protect_block = new ProtectBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.1f, 0.1f).harvestLevel(0).sound(SoundType.METAL).func_235838_a_(lightValue));
     
     public static final DeferredRegister<Block> BLOCK_LIST = DeferredRegister.create(ForgeRegistries.BLOCKS, Refs.MODID);
 
@@ -40,6 +42,7 @@ public class BlockList {
     private static final RegistryObject<Block> MID_BLOCK = BLOCK_LIST.register("mid_block", () -> mid_block);
     private static final RegistryObject<Block> MID_BLOCK_MARKER = BLOCK_LIST.register("mid_block_marker", () -> mid_block_marker);
     private static final RegistryObject<Block> END_BLOCK = BLOCK_LIST.register("end_block", () -> end_block);
+    private static final RegistryObject<Block> PROTECT_BLOCK = BLOCK_LIST.register("protect_block", () -> protect_block);
     
     public static final DeferredRegister<Item> ITEM_LIST = DeferredRegister.create(ForgeRegistries.ITEMS, Refs.MODID);
     
@@ -53,4 +56,6 @@ public class BlockList {
     												new BlockItem(MID_BLOCK_MARKER.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
     private static final RegistryObject<Item> END_BLOCK_ITEM = ITEM_LIST.register("end_block", () -> 
     												new BlockItem(END_BLOCK.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+    private static final RegistryObject<Item> PROTECT_BLOCK_ITEM = ITEM_LIST.register("protect_block", () -> 
+													new BlockItem(PROTECT_BLOCK.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
 }

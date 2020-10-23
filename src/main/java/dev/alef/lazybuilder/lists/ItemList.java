@@ -9,4 +9,5 @@ public class ItemList {
     public static Item mid_block;
     public static Item mid_block_marker;
     public static Item end_block;
+    public static Item protect_block;
 }

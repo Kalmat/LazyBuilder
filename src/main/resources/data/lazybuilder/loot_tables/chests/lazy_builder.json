@@ -5,7 +5,7 @@
       {
         "type": "minecraft:item",
         "name": "lazybuilder:start_block",
-        "weight": 30,
+        "weight": 20,
         "functions": [ { "function": "minecraft:set_count", "count": { "min": 1.0, "max": 1.0, "type": "minecraft:uniform" } } ]
       },
       {
@@ -17,9 +17,15 @@
       {
         "type": "minecraft:item",
         "name": "lazybuilder:end_block",
-        "weight": 30,
+        "weight": 20,
         "functions": [ { "function": "minecraft:set_count", "count": { "min": 1.0, "max": 1.0, "type": "minecraft:uniform" } } ]
       },      
+      {
+        "type": "minecraft:item",
+        "name": "lazybuilder:protect_block",
+        "weight": 20,
+        "functions": [ { "function": "minecraft:set_count", "count": { "min": 1.0, "max": 1.0, "type": "minecraft:uniform" } } ]
+      },
       {
         "type": "minecraft:item",
         "name": "lazybuilder:copy_paste_block",

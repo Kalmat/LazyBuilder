@@ -295,12 +295,12 @@ public class LazyBuilderClient {
     
 	@OnlyIn(Dist.CLIENT)
 	public static void registerKeybindings() {
-		KeyBinding[] KEYBINDS = new KeyBinding[2];
-	    KEYBINDS[0] = new KeyBinding("key.position.desc", KEY_UNDO, "key.lazybuilder.category");
-	    KEYBINDS[1] = new KeyBinding("key.rotate.desc", KEY_ROTATE, "key.lazybuilder.category");
+		List<KeyBinding> KEYBINDS = new ArrayList<KeyBinding>();
+	    KEYBINDS.add(new KeyBinding("key.position.desc", KEY_UNDO, "key.lazybuilder.category"));
+	    KEYBINDS.add(new KeyBinding("key.rotate.desc", KEY_ROTATE, "key.lazybuilder.category"));
 	    
-	    for (int i = 0; i < KEYBINDS.length; ++i) {
-	        ClientRegistry.registerKeyBinding(KEYBINDS[i]);
+	    for (int i = 0; i < KEYBINDS.size(); ++i) {
+	        ClientRegistry.registerKeyBinding(KEYBINDS.get(i));
 	    }
 	}
 	

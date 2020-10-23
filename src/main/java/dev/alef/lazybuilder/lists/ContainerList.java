@@ -3,6 +3,7 @@ package dev.alef.lazybuilder.lists;
 import dev.alef.lazybuilder.Refs;
 import dev.alef.lazybuilder.container.CopyPasteBlockContainer;
 import dev.alef.lazybuilder.container.StartBlockContainer;
+import dev.alef.lazybuilder.container.ProtectBlockContainer;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
@@ -17,4 +18,6 @@ public final class ContainerList {
 															IForgeContainerType.create(StartBlockContainer::new));
 	public static final RegistryObject<ContainerType<CopyPasteBlockContainer>> COPYPASTE_BLOCK = CONTAINER_LIST.register("copy_paste_block", () -> 
 															IForgeContainerType.create(CopyPasteBlockContainer::new));
+	public static final RegistryObject<ContainerType<ProtectBlockContainer>> PROTECT_BLOCK = CONTAINER_LIST.register("protect_block", () -> 
+															IForgeContainerType.create(ProtectBlockContainer::new));
 }

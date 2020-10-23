@@ -11,16 +11,21 @@ public class Refs {
 	
 	public static final int BUILDING = 0;
 	public static final int COPYPASTE = 1;
+	public static final int PROTECT = 2;
 
 	public static final int COPY = 0;
 	public static final int PASTE = 1;
 	
 	public static final int containerRows = 3;
 	public static final int containerCols = 9;
+	public static final int protectContainerRows = 1;
 	
 	public static final int magicColumnHeight = 10;
 	public static final int blocksPerItem = 20;
 	public static final int maxUndoActions = 50;
+	public static final int protectPerItem = 3;
+	public static final int maxProtectArea = 30;
+	public static final int protectionCost = 10000;
 	
 	public static final List<String> buildEmptyMsg = Arrays.asList("Start (green) Block is EMPTY", "Fill it with sufficient building blocks of your choice");
 	public static final List<String> onlyBlocksMsg = Arrays.asList("Only Blocks are allowed to build structures");
@@ -28,6 +33,7 @@ public class Refs {
 	public static final List<String> copyMsg = Arrays.asList("COPY FINISHED!!!", "Place and sneaking-activate BLUE Block to PASTE");
 	public static final List<String> copyEmptyMsg = Arrays.asList("Copy Paste (blue) Block is EMPTY", "Fill it with sufficient Redstone Blocks, Gold Ingots and/or Emeralds");
 	public static final List<String> onlyItemsMsg = Arrays.asList("Only Redstone Blocks, Gold Ingots and Emeralds", "allowed to fuel your Copy Machine");
+	public static final List<String> onlyItemsProtectMsg = Arrays.asList("Only Diamonds and Emeralds", "allowed to fuel your Protection Block");
 	public static final List<String> copyNotEnoughMsg = Arrays.asList("COPY FAILED!!!", "Not enough items in Copy/Paste (Blue) Block");
 	public static final List<String> copyAlreadyDoneMsg = Arrays.asList("COPY was previously DONE", "Place and sneaking-activate BLUE Block to PASTE");
 	public static final List<String> copyHeightNotZeroMsg = Arrays.asList("Can not copy a zero-height structure", "Set height by placing first Intermediate (yellow) Block at a different level");

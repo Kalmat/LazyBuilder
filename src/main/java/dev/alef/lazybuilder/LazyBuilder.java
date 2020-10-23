@@ -18,11 +18,13 @@ import dev.alef.lazybuilder.structure.StructureList;
 import dev.alef.lazybuilder.structure.Undo;
 import dev.alef.lazybuilder.structure.UndoList;
 import dev.alef.lazybuilder.client.gui.CopyPasteBlockGui;
+import dev.alef.lazybuilder.client.gui.ProtectBlockGui;
 import dev.alef.lazybuilder.client.gui.StartBlockGui;
 import dev.alef.lazybuilder.blocks.CopyPasteBlock;
 import dev.alef.lazybuilder.blocks.EndBlock;
 import dev.alef.lazybuilder.blocks.MidBlock;
 import dev.alef.lazybuilder.blocks.MidBlockMarker;
+import dev.alef.lazybuilder.blocks.ProtectBlock;
 import dev.alef.lazybuilder.blocks.StartBlock;
 import dev.alef.lazybuilder.client.LazyBuilderClient;
 import net.minecraft.block.BlockState;
@@ -67,6 +69,7 @@ public class LazyBuilder {
 	
     public static StructureList BUILD_LIST;
     public static StructureList COPYPASTE_LIST;
+    public static StructureList PROTECT_LIST;
     public static UndoList UNDO_LIST;
     private static boolean INITIALIZED = false;
     
@@ -87,6 +90,7 @@ public class LazyBuilder {
         MinecraftForge.EVENT_BUS.register(new onWorldUnload());
         MinecraftForge.EVENT_BUS.register(new onBlockPlacedListener());
         MinecraftForge.EVENT_BUS.register(new onBlockBreakListener());
+        MinecraftForge.EVENT_BUS.register(new onBreakSpeedListener());
         MinecraftForge.EVENT_BUS.register(new onRenderGameOverlayListener());
         MinecraftForge.EVENT_BUS.register(new onRenderWorldLastListener());
         MinecraftForge.EVENT_BUS.register(new onKeyInputListener());
@@ -104,6 +108,7 @@ public class LazyBuilder {
 		
 		BUILD_LIST = new StructureList();
 		COPYPASTE_LIST = new StructureList();
+		PROTECT_LIST = new StructureList();
 		UNDO_LIST = new UndoList();
 	}
 
@@ -122,6 +127,7 @@ public class LazyBuilder {
 		}
 		ScreenManager.registerFactory(ContainerList.START_BLOCK.get(), StartBlockGui::new);
 		ScreenManager.registerFactory(ContainerList.COPYPASTE_BLOCK.get(), CopyPasteBlockGui::new);
+		ScreenManager.registerFactory(ContainerList.PROTECT_BLOCK.get(), ProtectBlockGui::new);
     	LazyBuilderClient.registerKeybindings();
 	}
 	
@@ -177,11 +183,13 @@ public class LazyBuilder {
 				
 	            BUILD_LIST.add(WORLD, PLAYER);
 	            COPYPASTE_LIST.add(WORLD, PLAYER);
+	            PROTECT_LIST.add(WORLD, PLAYER);
 	            UNDO_LIST.add(WORLD, PLAYER);
 	            INITIALIZED = true;
 	            
 	        	BUILD_LIST.get(WORLD, PLAYER).read(WORLD, PLAYER, Refs.BUILDING);
 				COPYPASTE_LIST.get(WORLD, PLAYER).read(WORLD, PLAYER, Refs.COPYPASTE);
+				PROTECT_LIST.get(WORLD, PLAYER).read(WORLD, PLAYER, Refs.PROTECT);
 			}
         }
     }
@@ -195,6 +203,7 @@ public class LazyBuilder {
 			if (INITIALIZED && WORLD.isRemote) {
 				BUILD_LIST.get(WORLD, PLAYER).write(WORLD, PLAYER, Refs.BUILDING);
 				COPYPASTE_LIST.get(WORLD, PLAYER).write(WORLD, PLAYER, Refs.COPYPASTE);
+				PROTECT_LIST.get(WORLD, PLAYER).write(WORLD, PLAYER, Refs.PROTECT);
 				INITIALIZED = false;
 			}
     	}
@@ -211,9 +220,11 @@ public class LazyBuilder {
 			
 			BUILD_LIST.get(world, player).write(world, player, Refs.BUILDING);
 			COPYPASTE_LIST.get(world, player).write(world, player, Refs.COPYPASTE);
+			PROTECT_LIST.get(world, player).write(world, player, Refs.PROTECT);
 			
 			BUILD_LIST.delete(world, player);
 	        COPYPASTE_LIST.delete(world, player);
+	        PROTECT_LIST.delete(world, player);
 	        UNDO_LIST.delete(world, player);
         }
     }
@@ -243,6 +254,20 @@ public class LazyBuilder {
 				if (!(state.getBlock() instanceof StartBlock || state.getBlock() instanceof CopyPasteBlock || state.getBlock() instanceof MidBlock || state.getBlock() instanceof MidBlockMarker || state.getBlock() instanceof EndBlock)) {
 					Undo actionList = UNDO_LIST.get((World) event.getWorld(), event.getPlayer());
 					actionList.addAction(event);
+				}
+			}
+		}
+	}
+	
+	public class onBreakSpeedListener {
+		
+		@SubscribeEvent
+		public void BreakSpeed(final PlayerEvent.BreakSpeed event) {
+			
+			for (Structure protect : PROTECT_LIST.getList()) {
+				if (ProtectBlock.isBlockProtected(event.getPlayer().world, protect.getPlayer(), event.getPlayer(), protect.getStartBlockPos(), event.getPos())) {
+					event.setNewSpeed(0.0F);
+					//ProtectBlock.checkProtectionCost(event.getPlayer().world, protect.getPlayer(), protect.getStartBlockPos());  // Should it have a cost???
 				}
 			}
 		}

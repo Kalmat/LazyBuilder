@@ -43,6 +43,8 @@ public class Structure {
 	
 	private List<BlockState> STATE_LIST = new ArrayList<BlockState>();
 	
+	private int PROTECT_COUNT = 0;
+	
 	public Structure(World worldIn, PlayerEntity player) {
 		WORLD = worldIn;
 		PLAYER = player;
@@ -409,5 +411,13 @@ public class Structure {
 	private String decypher(String text) {
 		byte[] decBytes = Base64.getDecoder().decode(text);
 		return new String(decBytes);
+	}
+	
+	public void setProtectCount(int count) {
+		PROTECT_COUNT = count;
+	}
+	
+	public int getProtectCount() {
+		return PROTECT_COUNT;
 	}
 }
