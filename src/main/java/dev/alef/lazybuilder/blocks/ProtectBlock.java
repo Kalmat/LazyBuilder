@@ -98,7 +98,6 @@ public class ProtectBlock extends Block {
 
     	protectBlock.setProtectCount(protectBlock.getProtectCount() + 1);
     	
-    	LOGGER.info("PROTECT COUNT "+protectBlock.getProtectCount());
     	if (protectBlock.getProtectCount() >= Refs.protectionCost) {
     		protectBlock.setProtectCount(0);
         	ProtectBlockTileEntity.extractItem(worldIn, playerProtect, protectBlock.getStartBlockPos(), 1);
