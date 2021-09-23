@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+          [
+            "BBB",
+            "BIB",
+            "BBB"
+          ],
+  "key": {
+    "B": { "item": "minecraft:cobblestone"},
+    "I": { "item": "minecraft:pumpkin"}
+  },
+  "result": { "item": "lazybuilder:destruct_block"},
+  "count": 1
+}

@@ -1,0 +1,9 @@
+{
+  "block.lazybuilder.start_block": "Start Block",
+  "block.lazybuilder.copy_paste_block": "Copy&Paste Block",
+  "block.lazybuilder.mid_block": "Intermediate Block",
+  "block.lazybuilder.mid_block_marker": "Height Marker Block",
+  "block.lazybuilder.end_block": "End Block",
+  "block.lazybuilder.protect_block": "Protection Block",
+  "block.lazybuilder.destruct_block": "Destruction Block"
+}

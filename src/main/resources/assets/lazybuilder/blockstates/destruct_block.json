@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "lazybuilder:block/destruct_block" }
+  }
+}
