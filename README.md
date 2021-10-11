@@ -19,8 +19,8 @@ What you will need for every structure type:
 
 * One Line (row or column): 1 Start Block + 1 End Block
 * A wall: 1 Start Block + 1 Intermediate Block (wich sets the height) + 1 End Block
-* 2-N walls: 1 Start Block + 2-N Intermediate Blocks + 1 End Block
-* A floor (or a roof): 1 Start Block + 1 Intermediate Block (at the same height than the Start Block) + 1 End Block
+* 2-N walls: 1 Start Block + 1 Intermediate Block (wich sets the height) + N Intermediate Blocks (at the corners) + 1 End Block
+* A floor (or a roof): 1 Start Block + 1 Intermediate Block (at the same exact height than the Start Block) + 1 End Block
 
 ### MAGIC COLUMN ###
 
