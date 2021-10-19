@@ -3,7 +3,7 @@
 Build huge and complex structures quickly by automating the routinary task of placing blocks, copy and paste any structure you like, wipe any structure or area you need, protect your constructions, undo your building mistakes or quickly scape from mobs!
 
 ## TUTORIAL ##
-< https://docs.google.com/document/d/1T8tFxeFUa-Ad0CZNsnDvd69oOKFd71T0WPDsnyLz-3w >
+< https://github.com/Kalmat/LazyBuilder/blob/master/LazyBuilder-Tutorial.pdf >
 
 ### BUILDING ###
 
